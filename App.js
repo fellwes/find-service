@@ -1,20 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomePage from "./Components/homePage/homePage";
+import ServiceContent from "./Components/serviceContent/serviceContent";
+import AddService from "./Components/addService/addService";
 
-export default function App() {
+const Stack = createStackNavigator();
+
+function StackComponent() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name="Home" component={HomePage}></Stack.Screen>
+      <Stack.Screen
+        name="Service"
+        component={ServiceContent}
+        options={{ title: "Service" }}
+      ></Stack.Screen>
+      <Stack.Screen
+        name="Add"
+        component={AddService}
+        options={{ title: "Add service" }}
+      ></Stack.Screen>
+    </Stack.Navigator>
   );
 }
+// const RootStack = createStackNavigator(
+//   {
+//     Home: HomePage,
+//     Info: InfoPage,
+//     About: AboutPage,
+//     Service: ServicePage,
+//     Add: AddServicePage
+//   },
+//   {
+//     initialRouteName: "Home",
+//   }
+// );
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+//const AppContainer = createAppContainer();
+
+export default class App extends Component {
+  render() {
+    return (
+      <NavigationContainer>
+        <StackComponent />
+      </NavigationContainer>
+    );
+  }
+}
