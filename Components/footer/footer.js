@@ -7,7 +7,7 @@ export default class Footer extends Component {
     return (
       <View>
         <Text style={globalStyles.footerTextStyle}>
-          All rights reserved &copy; Felizia West
+          All rights reserved &copy; Felicia Westesdotter
         </Text>
       </View>
     );
